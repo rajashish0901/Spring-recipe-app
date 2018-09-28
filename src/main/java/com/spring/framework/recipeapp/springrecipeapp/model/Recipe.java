@@ -1,4 +1,4 @@
-package com.spring.framework.recipeapp.springrecipeapp.domain;
+package com.spring.framework.recipeapp.springrecipeapp.model;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -31,6 +31,12 @@ public class Recipe {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "recipe")
     //One recipe can many ingredient
     private Set<Ingredient> ingredients;
+
+    @Enumerated(value = EnumType.STRING)
+    private Difficulty difficulty;
+
+    @ManyToMany
+    private Set<Category> categories;
 
     public Long getId() {
         return id;
